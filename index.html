@@ -37,27 +37,124 @@
           pattern that separates an application into three main logical
           components: the model, the view, and the controller.</div>
         </section>
+        <section>
+            <img class="stretch" src="MVC-basic.svg.png">
+        </section>
+        <section>
+            <h2>Recap</h2>
+            <ul>
+              <li>DDD</li>
+              <li>SOA</li>
+              <li class="highlight-current-blue">MVC</li>
+              <li>...</li>
+            </ul>
+        </section>
         <!-- Example Code Section -->
-        <!-- <section>
-          <h2 class="title">Example Code</h2>
+        <section>
+          <section class="title"><h1>Example Code</h1></section>
+        <section>
         <pre>
-<code class="hljs" data-line-numbers="4,8-11">
+        <code class="hljs" data-line-numbers="4,8-11">
+          public class Student {
+          private String rollNo;
+          private String name;
 
-  </code>
+          public String getRollNo() {
+            return rollNo;
+          }
+
+          public void setRollNo(String rollNo) {
+            this.rollNo = rollNo;
+          }
+
+          public String getName() {
+            return name;
+          }
+
+          public void setName(String name) {
+            this.name = name;
+          }
+      }
+      </code>
       </pre>
-        </section> -->
+      </section>
+
+      <section>
+          <pre>
+          <code class="hljs" data-line-numbers="4,8-11">
+              public class StudentView {
+                public void printStudentDetails(String studentName, String studentRollNo){
+                  System.out.println("Student: ");
+                  System.out.println("Name: " + studentName);
+                  System.out.println("Roll No: " + studentRollNo);
+                }
+             }
+        </code>
+        </pre>
+      </section>
+
+      <section>
+          <pre>
+          <code class="hljs" data-line-numbers="3,8-11">
+            public class StudentController {
+              private Student model;
+              private StudentView view;
+
+              public StudentController(Student model, StudentView view){
+                  this.model = model;
+                  this.view = view;
+              }
+
+              public void setStudentName(String name){
+                  model.setName(name);
+              }
+
+              public String getStudentName(){
+                  return model.getName();
+              }
+
+              public void setStudentRollNo(String rollNo){
+                  model.setRollNo(rollNo);
+              }
+
+              public String getStudentRollNo(){
+                  return model.getRollNo();
+              }
+
+              public void updateView(){
+                  view.printStudentDetails(model.getName(), model.getRollNo());
+              }
+            }
+        </code>
+        </pre>
+      </section>
+
+
+        </section>
         <!-- Advantages of Model-View-Controller -->
         <section>
           <h2>Advantages of MVC</h2>
           <div>
-
+            <ol>
+              <li class="fragment" data-fragment-index="1">Development of the application becomes fast.</li>
+              <li class="fragment" data-fragment-index="2">Easy for multiple developers to collaborate and work together.</li>
+              <li class="fragment" data-fragment-index="3">Easier to Update the application.</li>
+              <li class="fragment" data-fragment-index="4">Easier to Debug as we have multiple levels properly written in the application.</li>
+            </ol>
           </div>
         </section>
         <!-- Disadvantages of Model-View-Controller -->
         <section>
-          <h2>Disadvantages of using MVC</h2>
+          <section>
+            <h2>Disadvantages of using MVC</h2>
+            <li class="fragment" data-fragment-index="1">It is hard to understand the MVC architecture.</li>
+            <li class="fragment" data-fragment-index="2">Must have strict rules on methods.</li>
+            <li class="fragment" data-fragment-index="3">Fat Controllers</li>
+          </section>
+        </section>
 
         </section>
+        <!-- The Model -->
         <section>
           <section><h1>The Model</h1></section>
           <section>
@@ -68,6 +165,32 @@
           <section>
             For example, a Customer object will retrieve
             the customer information from the database, manipulate it and update it data back to the database or use it to render data.
+          </section>
+        </section>
+
+        <!-- The View -->
+        <section>
+          <section><h1>The View</h1></section>
+            <section>
+              <div>
+                The View component is used for all the UI logic of the application.
+                For example, the Customer view will include all the UI components such as text boxes,
+                dropdowns, etc. that the final user interacts with.
+              </div>
+            </section>
+        </section>
+
+        <!-- The Controller -->
+        <section>
+          <section><h1>The Controller</h1></section>
+          <section>
+              Controllers act as an interface between Model and View components
+              to process all the business logic and incoming requests, manipulate
+              data using the Model component and interact with the Views to render the final output.
+          </section>
+          <section>
+              For example, the Customer controller will handle all the interactions and inputs from the Customer View and update the database using the Customer Model.
+              The same controller will be used to view the Customer data.
           </section>
         </section>
 
